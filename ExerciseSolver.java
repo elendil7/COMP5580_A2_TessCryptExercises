@@ -1,3 +1,10 @@
+import annotations.AfterSolving;
+import annotations.BeforeSolving;
+import managers.FilesystemManager;
+import models.FreqModel;
+import utils.CipherUtils;
+import java.util.ArrayList;
+
 public class ExerciseSolver extends FilesystemManager {
   // all data loaded from files
   private String cexercise1 = getExerciseFileData("exercise1");
