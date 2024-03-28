@@ -18,3 +18,12 @@ public class ExerciseSolver extends FilesystemManager {
   private String tess26 = getTextFileData("tess26");
   private String tess27 = getTextFileData("tess27");
 
+  // bool toggles for which exercises I want to run
+  public boolean exercise1Enabled = false;
+  public boolean exercise2Enabled = true;
+  public boolean exercise3Enabled = false;
+  public boolean exercise4Enabled = false;
+  public boolean exercise5Enabled = false;
+  public boolean exercise6Enabled = false;
+  public boolean exercise7Enabled = false;
+
