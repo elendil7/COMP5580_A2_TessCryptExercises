@@ -28,7 +28,7 @@ public class CipherUtils {
 
   // vignere cipher reversal, using given key, rotations per method run: 1
   // source: https://github.com/mm898/Vigenere-cipher/blob/master/vigCipher.java
-  public static String rotateVignereCipher(String encoded, String key) {
+  public static String decryptVignereCipher(String encoded, String key) {
     String decoded = "";
     encoded = encoded.toUpperCase();
     for (int i = 0, j = 0; i < encoded.length(); i++) {
