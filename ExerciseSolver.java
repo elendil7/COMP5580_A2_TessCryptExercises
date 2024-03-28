@@ -57,3 +57,23 @@ public class ExerciseSolver extends FilesystemManager {
     setDecodedString(decoded);
   }
 
+  // * Exercise [#2] method
+  /*
+   * The plaintext comes from tess26.txt and is encoded with a Vigenere cipher
+   * using
+   * the 21-letter key TESSOFTHEDURBERVILLES.
+   */
+  @BeforeSolving
+  @AfterSolving
+  public void exercise2() {
+    String decoded = new String(cexercise2);
+    String key = "TESSOFTHEDURBERVILLES";
+
+    // if tess26 does not contain the decoded string, keep decoding
+    while (!tess26.contains(decoded)) {
+      decoded = CipherUtils.rotateVignereCipher(decoded, key);
+    }
+
+    setDecodedString(decoded);
+  }
+
