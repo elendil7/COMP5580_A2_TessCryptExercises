@@ -18,19 +18,26 @@ public class Launcher {
         // annotation(s)
         try {
           if ((boolean) exerciseSolver.getClass().getField(methodName + "Enabled").get(exerciseSolver)) {
-            // print the exercise name, passing last 1 char of method name as an int
-            PrettyStringUtils.printExerciseTitle(Integer.parseInt(methodName.substring(8)));
-
-            // run before solving processor
-            BeforeSolvingProcessor.process(exerciseSolver.getExerciseFileData(method.getName().toLowerCase()));
             try {
+              // set the cipher & decoded text to nothing
+              exerciseSolver.setCipherTxt("");
+              exerciseSolver.setDecodedTxt("");
+
+              // grab the exercise file data
+              String exerciseFileData = exerciseSolver.getExerciseFileData(methodName);
+
+              // run .setCipherTxt method, passing exerciseFileData as a parameter
+              exerciseSolver.setCipherTxt(exerciseFileData);
+
+              // run before solving processor
+              BeforeSolvingProcessor.process(methodName,
+                  exerciseSolver.getExerciseFileData(method.getName().toLowerCase()));
+
               // run the method
               method.invoke(exerciseSolver);
 
               // run after solving processor
-              AfterSolvingProcessor.process(exerciseSolver.getDecodedString());
-              // set the decoded string to nothing
-              exerciseSolver.setDecodedString("");
+              AfterSolvingProcessor.process(exerciseSolver.getDecodedTxt());
             } catch (Exception e) {
               System.out.println("Error invoking method " + methodName);
               e.printStackTrace();

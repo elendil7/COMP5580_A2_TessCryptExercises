@@ -20,23 +20,35 @@ public class ExerciseSolver extends FilesystemManager {
 
   // bool toggles for which exercises I want to run
   public boolean exercise1Enabled = false;
-  public boolean exercise2Enabled = true;
-  public boolean exercise3Enabled = false;
+  public boolean exercise2Enabled = false;
+  public boolean exercise3Enabled = true;
   public boolean exercise4Enabled = false;
   public boolean exercise5Enabled = false;
   public boolean exercise6Enabled = false;
   public boolean exercise7Enabled = false;
 
   // decoded string so that it can be accessed by the AfterSolvingProcessor
-  private String decodedString = "";
+  private String cipherTxt = "";
+  private String decodedTxt = "";
 
   // basic getters & setters
-  public String getDecodedString() {
-    return decodedString;
+  public String getDecodedTxt() {
+    return decodedTxt;
   }
 
-  public void setDecodedString(String decodedString) {
-    this.decodedString = decodedString;
+  public void setDecodedTxt(String decodedTxt) {
+    this.decodedTxt = decodedTxt;
+  }
+
+  // basic helper methods
+  public void setCipherTxt(String txtData) {
+    this.cipherTxt = new String(txtData).trim();
+  }
+
+  public void textContains(String text, String allegedlyDecodedTxt) {
+    if (text.contains(allegedlyDecodedTxt)) {
+      setDecodedTxt(allegedlyDecodedTxt);
+    }
   }
 
   // * Exercise [#1] method
@@ -44,17 +56,14 @@ public class ExerciseSolver extends FilesystemManager {
   @BeforeSolving
   @AfterSolving
   public void exercise1() {
-    // make new variable holding cexercise1
-    String decoded = new String(cexercise1);
-
     // while tess26 does not contain the decoded string, keep decoding
-    while (!tess26.contains(decoded)) {
+    while (!tess26.contains(cipherTxt)) {
       // decode the string
-      decoded = CipherUtils.rotateCaesarCipher(decoded, 1);
+      cipherTxt = CipherUtils.rotateCaesarCipher(cipherTxt, 1);
     }
 
-    // set the decoded string
-    setDecodedString(decoded);
+    // if tess26 contains the decoded string, set the decoded string
+    textContains(tess26, cipherTxt);
   }
 
   // * Exercise [#2] method
@@ -66,15 +75,13 @@ public class ExerciseSolver extends FilesystemManager {
   @BeforeSolving
   @AfterSolving
   public void exercise2() {
-    String decoded = new String(cexercise2);
     String key = "TESSOFTHEDURBERVILLES";
 
-    // if tess26 does not contain the decoded string, keep decoding
-    while (!tess26.contains(decoded)) {
-      decoded = CipherUtils.rotateVignereCipher(decoded, key);
-    }
+    // if decode the ciphetext using the given key
+    cipherTxt = CipherUtils.decryptVignereCipher(cipherTxt, key);
 
-    setDecodedString(decoded);
+    // if tess26 contains the decoded string, set the decoded string
+    textContains(tess26, cipherTxt);
   }
 
   // * Exercise [#3] method
@@ -96,10 +103,8 @@ public class ExerciseSolver extends FilesystemManager {
   @BeforeSolving
   @AfterSolving
   public void exercise3() {
-    String decoded = new String(cexercise3);
-
     // divide the text into 6 groups
-    String[] groups = CipherUtils.divideTextIntoBlocksOfNLength(decoded, 6);
+    String[] groups = CipherUtils.divideTextIntoBlocksOfNLength(decodedTxt, 6);
 
     // for each group, perform frequency analysis
     ArrayList<FreqModel> freq = CipherUtils.analyzeCharacterFrequencies(groups);
