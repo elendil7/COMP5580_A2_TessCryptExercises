@@ -26,7 +26,7 @@ public class FilesystemManager {
       }
       myReader.close();
       // clear white spaces, and return data
-      return data.replaceAll("\\s+", " ");
+      return data.replaceAll("\\s+", "");
     } catch (FileNotFoundException e) {
       System.out.println("An error occurred.");
       e.printStackTrace();
