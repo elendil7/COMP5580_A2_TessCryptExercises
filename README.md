@@ -33,3 +33,6 @@ The assignment provided the following resources:
 ## License
 
 This repository is licensed under the [MIT License](LICENSE).
+
+## Attribution:
+- [F12-Syntex's Crypto Assignment Repo](https://en.wikipedia.org/wiki/Thomas_Hardy)
