@@ -27,3 +27,15 @@ public class ExerciseSolver extends FilesystemManager {
   public boolean exercise6Enabled = false;
   public boolean exercise7Enabled = false;
 
+  // decoded string so that it can be accessed by the AfterSolvingProcessor
+  private String decodedString = "";
+
+  // basic getters & setters
+  public String getDecodedString() {
+    return decodedString;
+  }
+
+  public void setDecodedString(String decodedString) {
+    this.decodedString = decodedString;
+  }
+
