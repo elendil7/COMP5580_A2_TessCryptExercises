@@ -39,3 +39,21 @@ public class ExerciseSolver extends FilesystemManager {
     this.decodedString = decodedString;
   }
 
+  // * Exercise [#1] method
+  /* The plaintext comes from tess26.txt and is encoded with a Caesar cipher. */
+  @BeforeSolving
+  @AfterSolving
+  public void exercise1() {
+    // make new variable holding cexercise1
+    String decoded = new String(cexercise1);
+
+    // while tess26 does not contain the decoded string, keep decoding
+    while (!tess26.contains(decoded)) {
+      // decode the string
+      decoded = CipherUtils.rotateCaesarCipher(decoded, 1);
+    }
+
+    // set the decoded string
+    setDecodedString(decoded);
+  }
+
