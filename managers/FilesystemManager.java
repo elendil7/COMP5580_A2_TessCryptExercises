@@ -6,15 +6,19 @@ import java.util.Scanner;
 
 public class FilesystemManager {
   private String curDir;
+  private String baseDir;
+  private String specificOutputDir;
   private String pathToExercises;
   private String pathToTexts;
   private String pathToOutput;
 
   public FilesystemManager() {
     this.curDir = System.getProperty("user.dir");
-    this.pathToExercises = "resources/exercises";
-    this.pathToTexts = "resources/texts";
-    this.pathToOutput = "resources/output";
+    this.baseDir = "resources";
+    this.specificOutputDir = "aragorn";
+    this.pathToExercises = this.baseDir + "/exercises";
+    this.pathToTexts = this.baseDir + "/texts";
+    this.pathToOutput = this.baseDir + "/output" + "/" + this.specificOutputDir;
   }
 
   // Method for loading an exercise by reading its contents
