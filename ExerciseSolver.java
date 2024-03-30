@@ -61,6 +61,11 @@ public class ExerciseSolver extends FilesystemManager {
     }
   }
 
+  // new String method
+  public String newStr(String txt) {
+    return new String(txt);
+  }
+
   // * Exercise [#1] method
   /* The plaintext comes from tess26.txt and is encoded with a Caesar cipher. */
   @BeforeSolving
