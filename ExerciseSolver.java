@@ -92,6 +92,10 @@ public class ExerciseSolver extends FilesystemManager {
 
     // if tess26 contains the decoded string, set the decoded string
     textContains(tess26, cipherTxt);
+
+    // set explanation
+    setExplanation(
+        "I used my java program to brute force the Caesar cipher, rotating the cipher text by 1 letter each time then checking if the decoded text is in tess26.txt. Once the decoded text was found, I set it as the decoded text and wrote it to the output file.");
   }
 
   // * Exercise [#2] method
@@ -110,6 +114,10 @@ public class ExerciseSolver extends FilesystemManager {
 
     // if tess26 contains the decoded string, set the decoded string
     textContains(tess26, cipherTxt);
+
+    // set explanation
+    setExplanation(
+        "I used the Vigenere cipher decryption method to decode the cipher text using the key TESSOFTHEDURBERVILLES in my java program. The vignere key was given in the exercise, so I did not have to find it. The key was repeated to the length of the cipherTxt, then each character of the cipher text was shifted by the corresponding character in the key to decode the text. Once the decoded text was found, I set it as the decoded text and wrote it to the output file.");
   }
 
   // * Exercise [#3] method
@@ -145,6 +153,10 @@ public class ExerciseSolver extends FilesystemManager {
 
     // if tess26 contains the decoded string, set the decoded string
     textContains(tess26, cipherTxt);
+
+    // set explanation
+    setExplanation(
+        "I used the Vigenere cipher decryption method to decode the cipher text using the key I found in my java program. The vignere key was not given in the exercise, so I had to find it. I divided the cipher text into 6 groups using the modulo operator, then found the character frequencies for each group respectively. I then found the key by comparing the character frequencies to the English language character frequencies, determining the optimal shift for each group. Using the newfound key, I decoded the ciphertext in the same way as exercise 2. Once the decoded text was found, I set it as the decoded text in my java program and wrote it to the output file.");
   }
 
   // * Exercise [#4] method
@@ -190,6 +202,9 @@ public class ExerciseSolver extends FilesystemManager {
       }
     }
 
+    // set explanation
+    setExplanation(
+        "I used the Vigenere cipher decryption method to decode the cipher text using the key I found in my java program. The vignere key was not given in the exercise, so I had to find it. I divided the cipher text into 4, 5, and 6 groups respectively using the modulo operator, then found the character frequencies for each group respectively. I then found the key by comparing the character frequencies to the English language character frequencies, determining the optimal shift for each group. Using the newfound keys, I decoded the ciphertext in the same way as exercise 2, by decrypting the ciphertext with keys of length (4,5,6) respectively. Once the decoded text was found (by comparing the decoded output to the tess26 plaintext file), I set it as the decoded text in my java program and wrote it to the output file.");
   }
 
   // * Exercise [#5] method
@@ -232,6 +247,10 @@ public class ExerciseSolver extends FilesystemManager {
         break;
       }
     }
+
+    // set explanation
+    setExplanation(
+        "I used my java program to decode the cipher text using a transposition cipher. I filled a 2D array with the cipher text, row-wise, spanning 4, 5, then 6 columns (per iteration of the loop). For each iteration, I read out the columns from right to left (reverse order) to get the original plaintext. I checked if the decoded text was in tess26.txt. If it was, I set the decoded text. If it was not, I continued to the next iteration (using 4,5,6 columns respectively). Once the decoded text was found, I set it as the decoded text in my java program and wrote it to the output file.");
   }
 
   // * Exercise [#6] method
@@ -269,6 +288,10 @@ public class ExerciseSolver extends FilesystemManager {
         break;
       }
     }
+
+    // set explanation
+    setExplanation(
+        "I used my java program to decode the cipher text using a transposition cipher. I generated permutations of every possible variation of inserting the ciphertext into the 6 columns. I then decoded the cipher text using every possible permutation (essentially brute force), till the decoded text at the current iteration was located in tess26.txt. If it was, I set the decoded text. If it was not, I continued to the next permutation. Once the decoded text was found, I set it as the decoded text in my java program and wrote it to the output file.");
   }
 
   // * Exercise [#7] method
@@ -292,5 +315,9 @@ public class ExerciseSolver extends FilesystemManager {
 
     // if tess27 contains the decoded string, set the decoded string
     textContains(tess27, decodedTxt);
+
+    // set explanation
+    setExplanation(
+        "I used my java program to decode the cipher text using a general substitution cipher. I compared the decoded text to tess27.txt, seeing which characters matched at every index to get the most probable decoded text. Once the decoded text was found, I set it as the decoded text in my java program and wrote it to the output file.");
   }
 }
