@@ -26,8 +26,8 @@ public class ExerciseSolver extends FilesystemManager {
   public boolean exercise2Enabled = false;
   public boolean exercise3Enabled = false;
   public boolean exercise4Enabled = false;
-  public boolean exercise5Enabled = true;
-  public boolean exercise6Enabled = false;
+  public boolean exercise5Enabled = false;
+  public boolean exercise6Enabled = true;
   public boolean exercise7Enabled = false;
 
   // decoded string so that it can be accessed by the AfterSolvingProcessor
@@ -226,6 +226,21 @@ public class ExerciseSolver extends FilesystemManager {
   @BeforeSolving
   @AfterSolving
   public void exercise6() {
+    // generate permutations of the columns (6 columns)
+    ArrayList<int[]> permutations = TranspositionUtils.generatePermutations(6);
+
+    // for each permutation
+    for (int[] permutation : permutations) {
+      // temp variable for holding current cipher text (to prevent overwriting the
+      // original cipher text on each iteration)
+      String cipherTxt = newStr(this.cipherTxt);
+
+      // decode the cipher text using the current permutation
+      cipherTxt = TranspositionUtils.bruteForceDecipherTranspositionCipherWithNColumns(cipherTxt, permutation);
+
+      // if tess26 contains the decoded string, set the decoded string
+      textContains(tess26, cipherTxt);
+    }
   }
 
   // * Exercise [#7] method
