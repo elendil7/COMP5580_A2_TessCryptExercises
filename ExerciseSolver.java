@@ -150,7 +150,27 @@ public class ExerciseSolver extends FilesystemManager {
   @BeforeSolving
   @AfterSolving
   public void exercise4() {
+    // for every key length between 4 and 6
+    for (int i = 4; i <= 6; i++) {
+      // temp variable for holding current cipher text (to prevent overwriting the
+      // original cipher text on each iteration)
+      String cipherTxt = newStr(this.cipherTxt);
 
+      // divide the text into i groups
+      String[] groups = VignereUtils.divideTextIntoNGroups(cipherTxt, i);
+
+      // get character frequencies for each group
+      ArrayList<ArrayList<FreqModel>> freqs = VignereUtils.getCharacterFrequenciesForAllBlocks(groups);
+
+      // find the vignere key
+      String key = VignereUtils.findKey(freqs);
+
+      // decode the ciphertext using the key
+      cipherTxt = VignereUtils.decryptVignereCipher(cipherTxt, key);
+
+      // if tess26 contains the decoded string, set the decoded string
+      textContains(tess26, cipherTxt);
+    }
   }
 
   // * Exercise [#5] method
