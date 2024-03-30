@@ -104,16 +104,19 @@ public class ExerciseSolver extends FilesystemManager {
   @AfterSolving
   public void exercise3() {
     // divide the text into 6 groups
-    String[] groups = CipherUtils.divideTextIntoBlocksOfNLength(decodedTxt, 6);
+    String[] groups = VignereUtils.divideTextIntoNGroups(cipherTxt, 6);
 
-    // for each group, perform frequency analysis
-    ArrayList<FreqModel> freq = CipherUtils.analyzeCharacterFrequencies(groups);
+    // get character frequencies for each group
+    ArrayList<ArrayList<FreqModel>> freqs = VignereUtils.getCharacterFrequenciesForAllBlocks(groups);
 
-    // sort the frequencies
-    ArrayList<FreqModel> sortedFreq = CipherUtils.sortCharacterFrequencies(freq);
+    // find the vignere key
+    String key = VignereUtils.findKey(freqs);
 
-    // print out the sorted frequencies
-    CipherUtils.printCharacterFrequencies(sortedFreq);
+    // decode the ciphertext using the key
+    cipherTxt = VignereUtils.decryptVignereCipher(cipherTxt, key);
+
+    // if tess26 contains the decoded string, set the decoded string
+    textContains(tess26, cipherTxt);
   }
 
   // * Exercise [#4] method
