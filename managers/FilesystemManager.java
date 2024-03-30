@@ -8,11 +8,13 @@ public class FilesystemManager {
   private String curDir;
   private String pathToExercises;
   private String pathToTexts;
+  private String pathToOutput;
 
   public FilesystemManager() {
     this.curDir = System.getProperty("user.dir");
     this.pathToExercises = "resources/exercises";
     this.pathToTexts = "resources/texts";
+    this.pathToOutput = "resources/output";
   }
 
   // Method for loading an exercise by reading its contents
@@ -34,6 +36,7 @@ public class FilesystemManager {
     }
   }
 
+  // getter methods
   public String getExerciseFileData(String exerciseNum) {
     return this
         .readAndReturnFileData(String.format("%s/%s/c%s.txt", curDir, this.pathToExercises, exerciseNum));
@@ -41,5 +44,36 @@ public class FilesystemManager {
 
   public String getTextFileData(String fileName) {
     return this.readAndReturnFileData(String.format("%s/%s/%s.txt", curDir, this.pathToTexts, fileName));
+  }
+
+  // write the decoded text & explanation to the file
+  public void writeToFile(String fileName, String decodedTxt, String explanation) {
+    try {
+      // log all inputs
+      // System.out.println(String.format("Writing to file: %s/%s/%s.txt", curDir,
+      // this.pathToOutput, fileName));
+
+      // make the output dir, if not exists
+      File dir = new File(String.format("%s/%s", curDir, this.pathToOutput));
+      dir.mkdirs();
+
+      // create the file
+      File myObj = new File(String.format("%s/%s/%s.txt", curDir, this.pathToOutput, fileName));
+      myObj.createNewFile();
+
+      // write the first 30 chars of the decoded text to the file
+      java.io.FileWriter myWriter = new java.io.FileWriter(myObj);
+      myWriter.write(decodedTxt.substring(0, 30));
+
+      // write the explanation to the file
+      myWriter.write("\n\n");
+      myWriter.write(explanation);
+
+      // close the writer
+      myWriter.close();
+    } catch (Exception e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }
   }
 }

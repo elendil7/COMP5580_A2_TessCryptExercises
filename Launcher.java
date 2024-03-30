@@ -38,6 +38,10 @@ public class Launcher {
 
               // run after solving processor
               AfterSolvingProcessor.process(exerciseSolver.getDecodedTxt());
+
+              // write the decoded text & explanation to the /resources/output/ folder
+              exerciseSolver.writeToFile(methodName, exerciseSolver.getDecodedTxt(),
+                  exerciseSolver.getExplanation());
             } catch (Exception e) {
               System.out.println("Error invoking method " + methodName);
               e.printStackTrace();
@@ -47,7 +51,6 @@ public class Launcher {
           System.out.println("Field for toggling exercise " + methodName.substring(8) + " not found.");
           e.printStackTrace();
         }
-
       }
     }
   }
