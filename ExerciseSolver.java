@@ -3,6 +3,7 @@ import annotations.BeforeSolving;
 import managers.FilesystemManager;
 import models.FreqModel;
 import utils.CaesarUtils;
+import utils.TranspositionUtils;
 import utils.VignereUtils;
 
 import java.util.ArrayList;
@@ -24,8 +25,8 @@ public class ExerciseSolver extends FilesystemManager {
   public boolean exercise1Enabled = false;
   public boolean exercise2Enabled = false;
   public boolean exercise3Enabled = false;
-  public boolean exercise4Enabled = true;
-  public boolean exercise5Enabled = false;
+  public boolean exercise4Enabled = false;
+  public boolean exercise5Enabled = true;
   public boolean exercise6Enabled = false;
   public boolean exercise7Enabled = false;
 
@@ -185,6 +186,29 @@ public class ExerciseSolver extends FilesystemManager {
   @BeforeSolving
   @AfterSolving
   public void exercise5() {
+    /*
+     * My thoughts:
+     * 1. Fill a 2D array with the cipher text, row-wise, spanning 4, 5, then 6
+     * columns (per iteration of the loop)
+     * 2. For each iteration, read out the columns from right to left (reverse
+     * order)
+     * 3. Check if the decoded text is in tess26.txt
+     * 4. If it is, set the decoded text
+     * 5. If it is not, continue to the next iteration
+     */
+
+    // for each number of columns between 4 and 6
+    for (int i = 4; i <= 6; i++) {
+      // temp variable for holding current cipher text (to prevent overwriting the
+      // original cipher text on each iteration)
+      String cipherTxt = newStr(this.cipherTxt);
+
+      // decode the cipher text using the current number of columns
+      cipherTxt = TranspositionUtils.decipherTranspositionCipher(cipherTxt, i);
+
+      // if tess26 contains the decoded string, set the decoded string
+      textContains(tess26, cipherTxt);
+    }
   }
 
   // * Exercise [#6] method
