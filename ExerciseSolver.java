@@ -3,6 +3,7 @@ import annotations.BeforeSolving;
 import managers.FilesystemManager;
 import models.FreqModel;
 import utils.CaesarUtils;
+import utils.SubstitutionUtils;
 import utils.TranspositionUtils;
 import utils.VignereUtils;
 
@@ -27,8 +28,8 @@ public class ExerciseSolver extends FilesystemManager {
   public boolean exercise3Enabled = false;
   public boolean exercise4Enabled = false;
   public boolean exercise5Enabled = false;
-  public boolean exercise6Enabled = true;
-  public boolean exercise7Enabled = false;
+  public boolean exercise6Enabled = false;
+  public boolean exercise7Enabled = true;
 
   // decoded string so that it can be accessed by the AfterSolvingProcessor
   private String cipherTxt = "";
@@ -255,5 +256,14 @@ public class ExerciseSolver extends FilesystemManager {
   @BeforeSolving
   @AfterSolving
   public void exercise7() {
+    // Website used for decoding the ciphertext: https://planetcalc.com/8047/
+    String decodedTxt = "INTEDASAMICCAUPONAHERA|HEEMAHSLFAPERFUN|TORILYAHSLFASCAIFAXECTAHSDANOTAYETAQUITEADIEDAOUTAHERAEYECAVSGUELYARECTEDAUPONATHEAREBOTECTATREECAINATHEALSNEAWHILEATHEAMICCAWSCAGIVENASCATHOUGHACHEAWEREANESRLYAUN|ONC|IOUCAOFAWHSTAHEADIDANOWATHEAOTHERACIDEAFORAOLDAS|QUSINTSN|EACSMEACHEATURNEDAHERAHESDAINATHEACSBEAPSCCIVEAWSYASCAONEABIGHTATURNASTATHEAREQUECTAOFASACMET|HERAORAHSIRDRECCERASNDAHEAMICCEDATHEAOTHERACIDEAHICALIPCATOU|HINGA|HEEMCATHSTAWEREADSBPASNDACBOOTHLYA|HILLASCATHEACMINAOFATHEABUCHROOBCAINATHEAFIELDCASROUNDAYOUADONTAGIVEABEAYOURABOUTHASNDAMICCABEAKS|MAYOUANEVERAWILLINGLYADOATHSTAYOULLANEVERALOVEABEAIAFESRAIAHSVEACSIDACOAOFTENAITAICATRUEAIAHSVEANEVERARESLLYASNDATRULYALOVEDAYOUASNDAIATHINMAIANEVERA|SNACHEASDDEDABOURNFULLYAPERHSPCAOFASLLATHINGCASALIEAONATHICATHINGAWOULDADOATHEABOCTAGOODATOABEANOWAKUTAIAHSVEAHONOURAENOUGHALEFTAL";
+
+    // compare tess27 to the decoded text in full, see which characters match at
+    // every index, to get most probable decoded text
+    decodedTxt = SubstitutionUtils.compareTess27ToDecoded(tess27, decodedTxt);
+
+    // if tess27 contains the decoded string, set the decoded string
+    textContains(tess27, decodedTxt);
   }
 }
