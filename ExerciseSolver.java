@@ -2,7 +2,9 @@ import annotations.AfterSolving;
 import annotations.BeforeSolving;
 import managers.FilesystemManager;
 import models.FreqModel;
-import utils.CipherUtils;
+import utils.CaesarUtils;
+import utils.VignereUtils;
+
 import java.util.ArrayList;
 
 public class ExerciseSolver extends FilesystemManager {
@@ -21,8 +23,8 @@ public class ExerciseSolver extends FilesystemManager {
   // bool toggles for which exercises I want to run
   public boolean exercise1Enabled = false;
   public boolean exercise2Enabled = false;
-  public boolean exercise3Enabled = true;
-  public boolean exercise4Enabled = false;
+  public boolean exercise3Enabled = false;
+  public boolean exercise4Enabled = true;
   public boolean exercise5Enabled = false;
   public boolean exercise6Enabled = false;
   public boolean exercise7Enabled = false;
@@ -46,6 +48,14 @@ public class ExerciseSolver extends FilesystemManager {
   }
 
   public void textContains(String text, String allegedlyDecodedTxt) {
+    // if the ciphertxt is not the same length as the allegedly decoded text, throw
+    // an error
+    if (cipherTxt.length() != allegedlyDecodedTxt.length()) {
+      throw new Error("The cipher text and allegedly decoded text are not the same length.");
+    }
+
+    // if the text contains the allegedly decoded text, set the decoded text (for
+    // use in AfterSolvingProcessor)
     if (text.contains(allegedlyDecodedTxt)) {
       setDecodedTxt(allegedlyDecodedTxt);
     }
@@ -59,7 +69,7 @@ public class ExerciseSolver extends FilesystemManager {
     // while tess26 does not contain the decoded string, keep decoding
     while (!tess26.contains(cipherTxt)) {
       // decode the string
-      cipherTxt = CipherUtils.rotateCaesarCipher(cipherTxt, 1);
+      cipherTxt = CaesarUtils.rotateCaesarCipher(cipherTxt, 1);
     }
 
     // if tess26 contains the decoded string, set the decoded string
@@ -78,7 +88,7 @@ public class ExerciseSolver extends FilesystemManager {
     String key = "TESSOFTHEDURBERVILLES";
 
     // if decode the ciphetext using the given key
-    cipherTxt = CipherUtils.decryptVignereCipher(cipherTxt, key);
+    cipherTxt = VignereUtils.decryptVignereCipher(cipherTxt, key);
 
     // if tess26 contains the decoded string, set the decoded string
     textContains(tess26, cipherTxt);
