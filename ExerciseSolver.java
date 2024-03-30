@@ -172,7 +172,13 @@ public class ExerciseSolver extends FilesystemManager {
 
       // if tess26 contains the decoded string, set the decoded string
       textContains(tess26, cipherTxt);
+
+      // if the decoded text is found, break out of the loop
+      if (tess26.contains(cipherTxt)) {
+        break;
+      }
     }
+
   }
 
   // * Exercise [#5] method
@@ -209,6 +215,11 @@ public class ExerciseSolver extends FilesystemManager {
 
       // if tess26 contains the decoded string, set the decoded string
       textContains(tess26, cipherTxt);
+
+      // if the decoded text is found, break out of the loop
+      if (tess26.contains(cipherTxt)) {
+        break;
+      }
     }
   }
 
@@ -241,6 +252,11 @@ public class ExerciseSolver extends FilesystemManager {
 
       // if tess26 contains the decoded string, set the decoded string
       textContains(tess26, cipherTxt);
+
+      // if the decoded text is found, break out of the loop
+      if (tess26.contains(cipherTxt)) {
+        break;
+      }
     }
   }
 
