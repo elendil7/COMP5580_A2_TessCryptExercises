@@ -18,9 +18,10 @@ public class Launcher {
         try {
           if ((boolean) exerciseSolver.getClass().getField(methodName + "Enabled").get(exerciseSolver)) {
             try {
-              // set the cipher & decoded text to nothing
+              // set the cipher & decoded text & explanation to empty strings
               exerciseSolver.setCipherTxt("");
               exerciseSolver.setDecodedTxt("");
+              exerciseSolver.setExplanation("");
 
               // grab the exercise file data
               String exerciseFileData = exerciseSolver.getExerciseFileData(methodName);

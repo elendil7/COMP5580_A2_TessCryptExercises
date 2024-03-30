@@ -35,6 +35,9 @@ public class ExerciseSolver extends FilesystemManager {
   private String cipherTxt = "";
   private String decodedTxt = "";
 
+  // string field for explanation of the exercise
+  private String explanation = "";
+
   // basic getters & setters
   public String getDecodedTxt() {
     return decodedTxt;
@@ -42,6 +45,14 @@ public class ExerciseSolver extends FilesystemManager {
 
   public void setDecodedTxt(String decodedTxt) {
     this.decodedTxt = decodedTxt;
+  }
+
+  public String getExplanation() {
+    return explanation;
+  }
+
+  public void setExplanation(String explanation) {
+    this.explanation = explanation;
   }
 
   // basic helper methods
