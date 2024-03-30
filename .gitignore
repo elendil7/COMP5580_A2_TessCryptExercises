@@ -1,2 +1,5 @@
 # build files
 *.class
+
+# output for exercise[n].txt files
+*/output
