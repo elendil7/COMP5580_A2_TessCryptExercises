@@ -7,18 +7,47 @@ import java.util.Scanner;
 public class FilesystemManager {
   private String curDir;
   private String baseDir;
-  private String specificOutputDir;
-  private String pathToExercises;
   private String pathToTexts;
+  private String curUser;
+  private String pathToUsers;
+  private String pathToInput;
   private String pathToOutput;
 
   public FilesystemManager() {
     this.curDir = System.getProperty("user.dir");
     this.baseDir = "resources";
-    this.specificOutputDir = "aragorn";
-    this.pathToExercises = this.baseDir + "/exercises";
     this.pathToTexts = this.baseDir + "/texts";
-    this.pathToOutput = this.baseDir + "/output" + "/" + this.specificOutputDir;
+    this.pathToUsers = this.baseDir + "/users";
+    this.curUser = "_aragorn";
+    this.pathToInput = pathToUsers + "/" + curUser + "/input";
+    this.pathToOutput = pathToUsers + "/" + curUser + "/output";
+  }
+
+  // getter for path to input
+  public String getPathToInput() {
+    return this.pathToInput;
+  }
+
+  // method for setting new user (& updating paths respectively)
+  public void setUser(String user) {
+    this.curUser = user;
+    this.pathToInput = pathToUsers + "/" + curUser + "/input";
+    this.pathToOutput = pathToUsers + "/" + curUser + "/output";
+  }
+
+  // method for fetching all user names
+  public String[] getUsers() {
+    // grab users
+    File users = new File(String.format("%s/%s", curDir, this.pathToUsers));
+
+    // grab user names
+    String[] userNames = users.list();
+
+    // remove .gitignore from the users list
+    userNames = java.util.Arrays.stream(userNames).filter(name -> !name.equals(".gitignore")).toArray(String[]::new);
+
+    // return the user names
+    return userNames;
   }
 
   // Method for loading an exercise by reading its contents
@@ -43,7 +72,7 @@ public class FilesystemManager {
   // getter methods
   public String getExerciseFileData(String exerciseNum) {
     return this
-        .readAndReturnFileData(String.format("%s/%s/c%s.txt", curDir, this.pathToExercises, exerciseNum));
+        .readAndReturnFileData(String.format("%s/%s/c%s.txt", curDir, this.pathToInput, exerciseNum));
   }
 
   public String getTextFileData(String fileName) {
