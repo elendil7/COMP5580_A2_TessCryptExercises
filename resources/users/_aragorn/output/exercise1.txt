@@ -1,0 +1,3 @@
+WOULDATLEASTLETHERKNOWOFTHELOC
+
+I used my java program to brute force the Caesar cipher, rotating the cipher text by 1 letter each time then checking if the decoded text is in tess26.txt. Once the decoded text was found, I set it as the decoded text and wrote it to the output file.

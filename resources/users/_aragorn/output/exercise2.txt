@@ -1,0 +1,3 @@
+FHERANDTHELETTERWASREDIRECTEDT
+
+I used the Vigenere cipher decryption method to decode the cipher text using the key TESSOFTHEDURBERVILLES in my java program. The vignere key was given in the exercise, so I did not have to find it. The key was repeated to the length of the cipherTxt, then each character of the cipher text was shifted by the corresponding character in the key to decode the text. Once the decoded text was found, I set it as the decoded text and wrote it to the output file.

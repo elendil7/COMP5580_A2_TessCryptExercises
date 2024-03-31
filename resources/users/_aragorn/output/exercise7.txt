@@ -1,0 +1,3 @@
+INTED|A|KISS|UPON|HER|CHEEK|HA
+
+I used my java program to decode the cipher text using a general substitution cipher. I compared the decoded text to tess27.txt, seeing which characters matched at every index to get the most probable decoded text. Once the decoded text was found, I set it as the decoded text in my java program and wrote it to the output file.

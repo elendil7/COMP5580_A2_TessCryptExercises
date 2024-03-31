@@ -1,0 +1,3 @@
+TOPREMATUREINTERJECTIONSOFFINA
+
+I used my java program to decode the cipher text using a transposition cipher. I generated permutations of every possible variation of inserting the ciphertext into the 6 columns. I then decoded the cipher text using every possible permutation (essentially brute force), till the decoded text at the current iteration was located in tess26.txt. If it was, I set the decoded text. If it was not, I continued to the next permutation. Once the decoded text was found, I set it as the decoded text in my java program and wrote it to the output file.

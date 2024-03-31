@@ -1,0 +1,3 @@
+AIDSOTHEVERYFIRSTDAYIZIDHERAND
+
+I used the Vigenere cipher decryption method to decode the cipher text using the key I found in my java program. The vignere key was not given in the exercise, so I had to find it. I divided the cipher text into 6 groups using the modulo operator, then found the character frequencies for each group respectively. I then found the key by comparing the character frequencies to the English language character frequencies, determining the optimal shift for each group. Using the newfound key, I decoded the ciphertext in the same way as exercise 2. Once the decoded text was found, I set it as the decoded text in my java program and wrote it to the output file.
