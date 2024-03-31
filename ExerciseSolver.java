@@ -23,13 +23,13 @@ public class ExerciseSolver extends FilesystemManager {
   private String tess27 = getTextFileData("tess27");
 
   // bool toggles for which exercises I want to run
-  public boolean exercise1Enabled = true;
-  public boolean exercise2Enabled = true;
-  public boolean exercise3Enabled = true;
-  public boolean exercise4Enabled = true;
-  public boolean exercise5Enabled = true;
-  public boolean exercise6Enabled = true;
-  public boolean exercise7Enabled = true;
+  public boolean exercise1Enabled = AppConfig.runExercise1Enabled;
+  public boolean exercise2Enabled = AppConfig.runExercise2Enabled;
+  public boolean exercise3Enabled = AppConfig.runExercise3Enabled;
+  public boolean exercise4Enabled = AppConfig.runExercise4Enabled;
+  public boolean exercise5Enabled = AppConfig.runExercise5Enabled;
+  public boolean exercise6Enabled = AppConfig.runExercise6Enabled;
+  public boolean exercise7Enabled = AppConfig.runExercise7Enabled;
 
   // decoded string so that it can be accessed by the AfterSolvingProcessor
   private String cipherTxt = "";
