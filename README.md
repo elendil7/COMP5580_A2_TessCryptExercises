@@ -48,4 +48,4 @@ The assignment provided the following resources:
 This repository is licensed under the [MIT License](LICENSE).
 
 ## Attribution:
-- [F12-Syntex's Crypto Assignment Repo](https://en.wikipedia.org/wiki/Thomas_Hardy)
+- [F12-Syntex's Crypto Assignment Repo](https://github.com/F12-Syntex/TessCryptExercises)
