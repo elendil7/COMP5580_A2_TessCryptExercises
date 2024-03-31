@@ -14,7 +14,7 @@ public class AppConfig {
   public static boolean runExercise6Enabled = true;
   public static boolean runExercise7Enabled = false;
 
-  public static boolean solveOnlyForMe = false;
+  public static boolean solveOnlyForAragorn = false;
 
   public static AppConfig getInstance() {
     if (instance == null) {

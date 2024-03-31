@@ -13,7 +13,7 @@ public class MassExerciseSolverWrapper {
 
     // grab all users by reading the /resources/users/* directory
     String[] users;
-    if (AppConfig.solveOnlyForMe) {
+    if (AppConfig.solveOnlyForAragorn) {
       users = new String[] { "_aragorn" };
     } else {
       users = exSolver.getUsers();
