@@ -343,6 +343,6 @@ public class ExerciseSolver extends FilesystemManager {
 
     // set explanation
     setExplanation(
-        "I used my java program to decode the cipher text using a general substitution cipher. I compared the decoded text to tess27.txt, seeing which characters matched at every index to get the most probable decoded text. Once the decoded text was found, I set it as the decoded text in my java program and wrote it to the output file.");
+        "I used my java program to decode the cipher text using a general substitution cipher. First, I attained the frequencies of both the ciphertext and tess27 test, programatically. I then compared the most common characters in the cipher text to the most common characters in tess27, replacing the most common characters in the cipher text with the most common characters in tess27. I then compared tess27 to the decoded text in full, seeing which characters matched at every index, to get the most probable decoded text. Once the decoded text was found, I set it as the decoded text in my java program and wrote it to the output file.");
   }
 }
