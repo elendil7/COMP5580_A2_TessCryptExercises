@@ -20,7 +20,7 @@ public class AppConfig {
   public static boolean runExercise4Enabled = true;
   public static boolean runExercise5Enabled = true;
   public static boolean runExercise6Enabled = true;
-  public static boolean runExercise7Enabled = false;
+  public static boolean runExercise7Enabled = true;
 
   public static boolean solveOnlyForAragorn = false;
 
