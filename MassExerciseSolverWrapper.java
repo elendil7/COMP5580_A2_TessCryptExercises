@@ -24,7 +24,9 @@ public class MassExerciseSolverWrapper {
     if (AppConfig.generalLoggingEnabled) {
       System.out.println("Methods:");
       for (Method method : methods) {
-        System.out.print(method.getName() + " ");
+        if (method.getName().toLowerCase().contains("exercise")) {
+          System.out.print(method.getName() + " ");
+        }
       }
       System.out.println();
 
