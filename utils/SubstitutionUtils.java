@@ -67,5 +67,6 @@ public class SubstitutionUtils {
     for (int i = 0; i < n && i < substrings.size(); i++) {
       System.out.println(String.format("\nSubstring #%d: %s", i + 1, substrings.get(i)));
     }
+    System.out.println();
   }
 }
