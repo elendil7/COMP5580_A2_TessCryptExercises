@@ -102,7 +102,7 @@ public class SubstitutionUtils {
     // if app config debug logging is enabled, print the top N substrings
     if (AppConfig.debugLoggingEnabled) {
       // print the result and the count of matched characters
-      prettyPrintNumOfCharsMatched(maxCount, result.length());
+      prettyPrintConfidenceLevel(maxCount, result.length());
 
       // print the top N substrings and their counts
       printTopNSubstrings(substrings, 10);
@@ -112,8 +112,9 @@ public class SubstitutionUtils {
     return result;
   }
 
-  public static void prettyPrintNumOfCharsMatched(int charsMatched, int totalChars) {
-    System.out.println(String.format("\nMax number of characters matched: %d/%d\n", charsMatched, totalChars));
+  public static void prettyPrintConfidenceLevel(int charsMatched, int totalChars) {
+    System.out.println(String.format("\nMax number of characters matched: %d/%d {confidence level: %s%%}\n",
+        charsMatched, totalChars, String.valueOf((double) charsMatched / totalChars * 100)));
   }
 
   public static void printTopNSubstrings(ArrayList<String> substrings, int n) {
