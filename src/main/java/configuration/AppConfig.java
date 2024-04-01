@@ -113,7 +113,7 @@ public class AppConfig {
             solveForSpecificUser = Boolean.parseBoolean(value);
             break;
           case "userToSolve":
-            userToSolve = value;
+            userToSolve = new String(value);
             break;
         }
       }
