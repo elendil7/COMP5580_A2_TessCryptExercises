@@ -32,10 +32,12 @@ public class PrettyStringUtils {
   }
 
   // pretty print with authority and box, "Exercise #number"
-  public static void printExerciseTitle(int exerciseNumber) {
+  public static void printExerciseTitle(int exerciseNumber, String username) {
     System.out.println(
-        String.format("\n%s\n%s%s\n%s\n", "====================", "EXERCISE #", exerciseNumber,
-            "===================="));
+        String.format("\n%s\nSOLVING %s%s FOR USER [%s]\n%s\n", "====================================", "EXERCISE #",
+            exerciseNumber,
+            username,
+            "===================================="));
   }
 
   // print with blank line below

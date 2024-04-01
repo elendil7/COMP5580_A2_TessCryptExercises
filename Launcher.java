@@ -1,4 +1,5 @@
 import configuration.AppConfig;
+import utils.PrettyStringUtils;
 
 public class Launcher {
   public static void main(String[] args) {
@@ -13,9 +14,9 @@ public class Launcher {
 
     // if success, print success message
     if (success) {
-      System.out.println("All exercises solved successfully!");
+      System.out.println(PrettyStringUtils.blankLineBelow("All exercises solved successfully!"));
     } else {
-      System.out.println("An error occurred while solving exercises.");
+      System.out.println(PrettyStringUtils.blankLineBelow("An error occurred while solving exercises."));
     }
   }
 }
