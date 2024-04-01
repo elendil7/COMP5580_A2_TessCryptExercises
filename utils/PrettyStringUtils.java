@@ -11,6 +11,16 @@ public class PrettyStringUtils {
     return String.format("%s\n", string);
   }
 
+  // put 1 blank line above string
+  public static String blankLineAbove(String string) {
+    return String.format("\n%s", string);
+  }
+
+  // put 1 blank line above and below string
+  public static String blankLineAboveAndBelow(String string) {
+    return String.format("\n%s\n", string);
+  }
+
   // and print with prefix
   public static void printWithPrefix(String prefix, String string) {
     System.out.println(prefix(prefix, string));
