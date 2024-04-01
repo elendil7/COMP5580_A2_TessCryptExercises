@@ -2,6 +2,8 @@ package utils;
 
 import java.util.ArrayList;
 
+import configuration.AppConfig;
+
 public class SubstitutionUtils {
   // Iterate through entire given tess27 plaintext, and see how similar it is to
   // the given semi-decoded plaintext
@@ -43,11 +45,14 @@ public class SubstitutionUtils {
       return Integer.parseInt(bSplit[1]) - Integer.parseInt(aSplit[1]);
     });
 
-    // print the result and the count of matched characters
-    // prettyPrintNumOfCharsMatched(maxCount, result.length());
+    // if app config debug logging is enabled, print the top N substrings
+    if (AppConfig.debugLoggingEnabled) {
+      // print the result and the count of matched characters
+      prettyPrintNumOfCharsMatched(maxCount, result.length());
 
-    // print the top N substrings and their counts
-    // printTopNSubstrings(substrings, 50);
+      // print the top N substrings and their counts
+      printTopNSubstrings(substrings, 10);
+    }
 
     // return the result
     return result;

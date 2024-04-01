@@ -1,5 +1,6 @@
 import annotations.AfterSolving;
 import annotations.BeforeSolving;
+import configuration.AppConfig;
 import managers.FilesystemManager;
 import models.FreqModel;
 import utils.CaesarUtils;

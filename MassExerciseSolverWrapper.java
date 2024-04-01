@@ -1,4 +1,5 @@
 import annotations.BeforeSolving;
+import configuration.AppConfig;
 import processors.AfterSolvingProcessor;
 import processors.BeforeSolvingProcessor;
 import java.lang.reflect.Method;
