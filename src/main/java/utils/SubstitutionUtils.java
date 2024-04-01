@@ -102,19 +102,41 @@ public class SubstitutionUtils {
     // if app config debug logging is enabled, print the top N substrings
     if (AppConfig.debugLoggingEnabled) {
       // print the result and the count of matched characters
-      prettyPrintConfidenceLevel(maxCount, result.length());
+      prettyPrintConfidenceLevel(substrings.get(0), substrings.get(1), result.length());
 
       // print the top N substrings and their counts
-      printTopNSubstrings(substrings, 10);
+      // printTopNSubstrings(substrings, 5);
     }
 
     // return the result
     return result;
   }
 
-  public static void prettyPrintConfidenceLevel(int charsMatched, int totalChars) {
-    System.out.println(String.format("\nMax number of characters matched: %d/%d {confidence level: %s%%}\n",
-        charsMatched, totalChars, String.valueOf((double) charsMatched / totalChars * 100)));
+  public static void prettyPrintConfidenceLevel(String bestMatch, String secondBestMatch, int totalChars) {
+    // grab best match and second best match
+    String[] bestMatchSplit = bestMatch.split(" ");
+    String[] secondBestMatchSplit = secondBestMatch.split(" ");
+
+    // grab the count of matched characters for best match and second best match
+    int bestMatchCount = Integer.parseInt(bestMatchSplit[1]);
+    int secondBestMatchCount = Integer.parseInt(secondBestMatchSplit[1]);
+
+    // print out total number of characters matched
+    System.out.println(String.format("Max number of characters matched: [%d/%d]",
+        bestMatchCount, totalChars));
+
+    // print out confidence level
+    System.out
+        .println(
+            (String.format("Confidence level: {%.2f%%}\n", round(((double) bestMatchCount / totalChars) * 100, 2))));
+
+    // print out total number of characters matched compared to 2nd best match
+    System.out.println(String.format("2nd Max number of characters matched: [%d/%d]",
+        secondBestMatchCount, totalChars));
+
+    // print out confidence of best match against 2nd best match
+    System.out.println(String.format("Confidence level compared to 2nd best match: {%.2f%%}\n",
+        round(((double) bestMatchCount / secondBestMatchCount) * 100, 2)));
   }
 
   public static void printTopNSubstrings(ArrayList<String> substrings, int n) {
