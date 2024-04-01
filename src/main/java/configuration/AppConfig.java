@@ -85,6 +85,9 @@ public class AppConfig {
           case "debugLoggingEnabled":
             debugLoggingEnabled = Boolean.parseBoolean(value);
             break;
+          case "runAllExercisesEnabled":
+            runAllExercisesEnabled = Boolean.parseBoolean(value);
+            break;
           case "runExercise1Enabled":
             runExercise1Enabled = Boolean.parseBoolean(value);
             break;
