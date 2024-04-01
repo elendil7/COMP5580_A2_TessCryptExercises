@@ -3,8 +3,62 @@ package src.main.java.utils;
 import java.util.ArrayList;
 
 import src.main.java.configuration.AppConfig;
+import src.main.java.models.FreqModel;
 
 public class SubstitutionUtils {
+  public static double round(double value, int places) {
+    if (places < 0)
+      throw new IllegalArgumentException();
+
+    long factor = (long) Math.pow(10, places);
+    value = value * factor;
+    long tmp = Math.round(value);
+    return (double) tmp / factor;
+  }
+
+  // pretty print the result of replacing most common chars
+  public static void prettyPrintReplaceMostCommonChars(String result) {
+    System.out.println("\n<<<Most common chars in ciphertxt replaced by most common chars of tess27:");
+    System.out.println(String.format("\n%s\n", result));
+  }
+
+  // pretty print most common frequencies given an ArrayList<FreqModel>
+  public static void prettyPrintMostCommonFrequencies(ArrayList<FreqModel> freqs, String name) {
+    System.out.println(String.format("\n<<<Most common frequencies of %s>>>:\n", name));
+    for (int i = 0; i < freqs.size(); i++) {
+      System.out.println(String.format("Character #%d: %s, Count: %d, Frequency: %s", i + 1,
+          freqs.get(i).getCharacter(), freqs.get(i).getCount(),
+          String.valueOf(round(freqs.get(i).getFrequency(), 3))));
+    }
+  }
+
+  // replace most common chars in ciphertext with most common chars in tess27
+  public static String replaceMostCommonChars(String ciphertext, String tess27,
+      ArrayList<FreqModel> cipherTxtFreqs, ArrayList<FreqModel> tess27Freqs) {
+
+    // iterate through most common cipher text frequencies, in order of most common
+    // to least common
+    for (int i = 0; i < cipherTxtFreqs.size(); i++) {
+      // grab the current most common character in the cipher text
+      Character cipherChar = cipherTxtFreqs.get(i).getCharacter();
+
+      // grab the current most common character in tess27
+      Character tess27Char = tess27Freqs.get(i).getCharacter();
+
+      // replace all occurrences of the most common character in the cipher text with
+      // the most common character in tess27
+      ciphertext = ciphertext.replace(cipherChar, tess27Char);
+    }
+
+    if (AppConfig.debugLoggingEnabled) {
+      // pretty print the result
+      prettyPrintReplaceMostCommonChars(ciphertext);
+    }
+
+    // return the changed ciphertext
+    return ciphertext;
+  }
+
   // Iterate through entire given tess27 plaintext, and see how similar it is to
   // the given semi-decoded plaintext
   public static String compareTess27ToDecoded(String plainTxt, String decodedTxt) {

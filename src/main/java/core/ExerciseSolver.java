@@ -316,15 +316,30 @@ public class ExerciseSolver extends FilesystemManager {
   @BeforeSolving
   @AfterSolving
   public void exercise7() {
-    // Website used for decoding the ciphertext: https://planetcalc.com/8047/
-    String decodedTxt = "INTEDASAMICCAUPONAHERA|HEEMAHSLFAPERFUN|TORILYAHSLFASCAIFAXECTAHSDANOTAYETAQUITEADIEDAOUTAHERAEYECAVSGUELYARECTEDAUPONATHEAREBOTECTATREECAINATHEALSNEAWHILEATHEAMICCAWSCAGIVENASCATHOUGHACHEAWEREANESRLYAUN|ONC|IOUCAOFAWHSTAHEADIDANOWATHEAOTHERACIDEAFORAOLDAS|QUSINTSN|EACSMEACHEATURNEDAHERAHESDAINATHEACSBEAPSCCIVEAWSYASCAONEABIGHTATURNASTATHEAREQUECTAOFASACMET|HERAORAHSIRDRECCERASNDAHEAMICCEDATHEAOTHERACIDEAHICALIPCATOU|HINGA|HEEMCATHSTAWEREADSBPASNDACBOOTHLYA|HILLASCATHEACMINAOFATHEABUCHROOBCAINATHEAFIELDCASROUNDAYOUADONTAGIVEABEAYOURABOUTHASNDAMICCABEAKS|MAYOUANEVERAWILLINGLYADOATHSTAYOULLANEVERALOVEABEAIAFESRAIAHSVEACSIDACOAOFTENAITAICATRUEAIAHSVEANEVERARESLLYASNDATRULYALOVEDAYOUASNDAIATHINMAIANEVERA|SNACHEASDDEDABOURNFULLYAPERHSPCAOFASLLATHINGCASALIEAONATHICATHINGAWOULDADOATHEABOCTAGOODATOABEANOWAKUTAIAHSVEAHONOURAENOUGHALEFTAL";
+    // get frequencies of both tess27 and the cipher text
+    ArrayList<ArrayList<FreqModel>> allFreqs = VignereUtils
+        .getCharacterFrequenciesForAllBlocks(new String[] { tess27, cipherTxt });
+
+    // grab freq models for tess27 & cipher text
+    ArrayList<FreqModel> cipherTxtFreqs = allFreqs.get(1);
+    ArrayList<FreqModel> tess27Freqs = allFreqs.get(0);
+
+    if (AppConfig.debugLoggingEnabled) {
+      // print most common char based on frequency in tess27 and cipher text
+      SubstitutionUtils.prettyPrintMostCommonFrequencies(cipherTxtFreqs, "cipher text");
+      SubstitutionUtils.prettyPrintMostCommonFrequencies(tess27Freqs, "tess27");
+
+      // replace most common characters in the cipher text with the most common
+      // characters in tess27
+      cipherTxt = SubstitutionUtils.replaceMostCommonChars(cipherTxt, tess27, cipherTxtFreqs, tess27Freqs);
+    }
 
     // compare tess27 to the decoded text in full, see which characters match at
     // every index, to get most probable decoded text
-    decodedTxt = SubstitutionUtils.compareTess27ToDecoded(tess27, decodedTxt);
+    cipherTxt = SubstitutionUtils.compareTess27ToDecoded(tess27, cipherTxt);
 
     // if tess27 contains the decoded string, set the decoded string
-    textContains(tess27, decodedTxt);
+    textContains(tess27, cipherTxt);
 
     // set explanation
     setExplanation(
