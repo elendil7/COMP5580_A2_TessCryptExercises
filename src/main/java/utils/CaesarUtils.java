@@ -1,4 +1,4 @@
-package utils;
+package src.main.java.utils;
 
 public class CaesarUtils {
   // caesar cipher rotations (we will shift by 1 each time)

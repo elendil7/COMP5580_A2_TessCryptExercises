@@ -1,12 +1,14 @@
-import annotations.AfterSolving;
-import annotations.BeforeSolving;
-import configuration.AppConfig;
-import managers.FilesystemManager;
-import models.FreqModel;
-import utils.CaesarUtils;
-import utils.SubstitutionUtils;
-import utils.TranspositionUtils;
-import utils.VignereUtils;
+package src.main.java.core;
+
+import src.main.java.annotations.AfterSolving;
+import src.main.java.annotations.BeforeSolving;
+import src.main.java.configuration.AppConfig;
+import src.main.java.managers.FilesystemManager;
+import src.main.java.models.FreqModel;
+import src.main.java.utils.CaesarUtils;
+import src.main.java.utils.SubstitutionUtils;
+import src.main.java.utils.TranspositionUtils;
+import src.main.java.utils.VignereUtils;
 
 import java.util.ArrayList;
 
@@ -80,7 +82,7 @@ public class ExerciseSolver extends FilesystemManager {
     return new String(txt);
   }
 
-  // clean fields method
+  // clean fies
   public void cleanFields() {
     cipherTxt = "";
     decodedTxt = "";

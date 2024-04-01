@@ -1,6 +1,6 @@
-package processors;
+package src.main.java.processors;
 
-import utils.PrettyStringUtils;
+import src.main.java.utils.PrettyStringUtils;
 
 public class BeforeSolvingProcessor {
   public static void process(String methodName, String exerciseFileData, String username) {

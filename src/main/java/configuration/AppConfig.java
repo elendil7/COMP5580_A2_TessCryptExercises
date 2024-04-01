@@ -1,4 +1,4 @@
-package configuration;
+package src.main.java.configuration;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,6 +1,6 @@
-package processors;
+package src.main.java.processors;
 
-import utils.PrettyStringUtils;
+import src.main.java.utils.PrettyStringUtils;
 
 public class AfterSolvingProcessor {
   public static void process(String decodedString) {

@@ -1,10 +1,10 @@
-package utils;
+package src.main.java.utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import models.FreqModel;
+import src.main.java.models.FreqModel;
 
 public class VignereUtils {
   // most common letters, in order

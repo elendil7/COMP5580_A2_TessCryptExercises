@@ -1,8 +1,8 @@
-package utils;
+package src.main.java.utils;
 
 import java.util.ArrayList;
 
-import configuration.AppConfig;
+import src.main.java.configuration.AppConfig;
 
 public class SubstitutionUtils {
   // Iterate through entire given tess27 plaintext, and see how similar it is to

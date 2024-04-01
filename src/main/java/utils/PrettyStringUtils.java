@@ -1,4 +1,4 @@
-package utils;
+package src.main.java.utils;
 
 public class PrettyStringUtils {
   // put prefix of custom word before string

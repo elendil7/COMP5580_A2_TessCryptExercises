@@ -1,4 +1,4 @@
-package managers;
+package src.main.java.managers;
 
 import java.io.File;
 import java.io.FileNotFoundException;

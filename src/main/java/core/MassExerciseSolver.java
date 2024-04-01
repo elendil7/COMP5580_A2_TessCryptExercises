@@ -1,15 +1,18 @@
-import annotations.BeforeSolving;
-import configuration.AppConfig;
-import models.FailedExerciseForUserModel;
-import processors.AfterSolvingProcessor;
-import processors.BeforeSolvingProcessor;
+package src.main.java.core;
+
+import src.main.java.annotations.BeforeSolving;
+import src.main.java.configuration.AppConfig;
+import src.main.java.models.FailedExerciseForUserModel;
+import src.main.java.processors.AfterSolvingProcessor;
+import src.main.java.processors.BeforeSolvingProcessor;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-public class MassExerciseSolverWrapper {
+public class MassExerciseSolver {
   private ArrayList<FailedExerciseForUserModel> failedExercises;
 
-  public MassExerciseSolverWrapper() {
+  public MassExerciseSolver() {
     this.failedExercises = new ArrayList<>();
   }
 
