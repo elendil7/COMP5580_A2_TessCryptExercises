@@ -3,3 +3,6 @@
 
 # output for exercise[n].txt files
 */output
+
+# local config
+config.properties

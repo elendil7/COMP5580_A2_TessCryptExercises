@@ -1,6 +1,10 @@
+import configuration.AppConfig;
 
 public class Launcher {
   public static void main(String[] args) {
+    // generate appconfig instance
+    AppConfig.getInstance();
+
     // make new mass exercise solver
     MassExerciseSolverWrapper massExerciseSolverWrapper = new MassExerciseSolverWrapper();
 
