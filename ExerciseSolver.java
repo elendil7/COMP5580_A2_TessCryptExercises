@@ -80,6 +80,13 @@ public class ExerciseSolver extends FilesystemManager {
     return new String(txt);
   }
 
+  // clean fields method
+  public void cleanFields() {
+    cipherTxt = "";
+    decodedTxt = "";
+    explanation = "";
+  }
+
   // * Exercise [#1] method
   /* The plaintext comes from tess26.txt and is encoded with a Caesar cipher. */
   @BeforeSolving
