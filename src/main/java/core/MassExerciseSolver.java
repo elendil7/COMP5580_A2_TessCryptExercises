@@ -36,8 +36,8 @@ public class MassExerciseSolver {
 
     // grab all users by reading the /resources/users/* directory
     String[] users;
-    if (AppConfig.solveOnlyForAragorn) {
-      users = new String[] { "_aragorn" };
+    if (AppConfig.solveForSpecificUser) {
+      users = new String[] { AppConfig.userToSolve };
     } else {
       users = exSolver.getUsers();
     }
@@ -64,10 +64,12 @@ public class MassExerciseSolver {
         // grab method name to lower case
         String methodName = method.getName().toLowerCase();
 
-        // check if runExercise[n] is true. If so, process the method along with its
+        // check if runExercise[n] is true (OR ALL EXERCISES ARE ENABLED). If so,
+        // process the method along with its
         // annotation(s)
         try {
-          if ((boolean) exSolver.getClass().getField(methodName + "Enabled").get(exSolver)) {
+          if ((boolean) exSolver.getClass().getField(methodName + "Enabled").get(exSolver)
+              || AppConfig.runAllExercisesEnabled) {
             // for every user
             for (String user : users) {
               // set the user

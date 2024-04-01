@@ -14,6 +14,7 @@ public class AppConfig {
   public static boolean plaintextLoggingEnabled = true;
   public static boolean debugLoggingEnabled = false;
 
+  public static boolean runAllExercisesEnabled = true; // if true, overrides all of the below
   public static boolean runExercise1Enabled = true;
   public static boolean runExercise2Enabled = true;
   public static boolean runExercise3Enabled = true;
@@ -22,7 +23,8 @@ public class AppConfig {
   public static boolean runExercise6Enabled = true;
   public static boolean runExercise7Enabled = true;
 
-  public static boolean solveOnlyForAragorn = false;
+  public static boolean solveForSpecificUser = false;
+  public static String userToSolve = "";
 
   public static AppConfig getInstance() {
     if (instance == null) {
@@ -104,8 +106,11 @@ public class AppConfig {
           case "runExercise7Enabled":
             runExercise7Enabled = Boolean.parseBoolean(value);
             break;
-          case "solveOnlyForAragorn":
-            solveOnlyForAragorn = Boolean.parseBoolean(value);
+          case "solveForSpecificUser":
+            solveForSpecificUser = Boolean.parseBoolean(value);
+            break;
+          case "userToSolve":
+            userToSolve = value;
             break;
         }
       }
