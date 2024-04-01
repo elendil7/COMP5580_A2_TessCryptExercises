@@ -64,9 +64,11 @@ public class VignereUtils {
         char c = block.charAt(i);
 
         // if the character is not a letter, skip it
-        if (!Character.isLetter(c)) {
-          continue;
-        }
+        /*
+         * if (!Character.isLetter(c)) {
+         * continue;
+         * }
+         */
 
         // convert the character to uppercase
         c = Character.toUpperCase(c);
