@@ -11,9 +11,9 @@ This repository contains my solutions for the Cryptography Assignment from the C
    - /resources/users/<YOUR_USERNAME>/input/cexercise5.txt
    - /resources/users/<YOUR_USERNAME>/input/cexercise6.txt
    - /resources/users/<YOUR_USERNAME>/input/cexercise7.txt
-1. Enable the exercises you want to run in the **AppConfig.java** file at project root.
-2. Compile & Run **Launcher.java** at project root, as a java file.
-3. Check the output at **/resources/users/<YOUR_USERNAME>/output/** for the decrypted texts.
+2. Rename **example.config.properties** to **config.properties** and set your own configuration.
+3. Compile & Run **Launcher.java** at project root, as a java file.
+4. Check the output at **/resources/users/<YOUR_USERNAME>/output/** for the decrypted texts.
 
 ## Assignment Overview
 
